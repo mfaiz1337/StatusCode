@@ -1,0 +1,3 @@
+spyse.py
+requests
+colorama
