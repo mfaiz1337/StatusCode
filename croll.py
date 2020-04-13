@@ -12,6 +12,7 @@ Advance Option created By Md. Faizal
 __author__ = "Md. Faizal"
 __version__ = "croll 1.0dev"
 import requests
+import time
 import sys
 import spyse
 import re
@@ -67,8 +68,10 @@ for x in range(len(subdomain)):
         print("Conection Error ")
     except urllib3.exceptions.MaxRetryError:
         print("Over Retry")
-    finally:
-        print('\033[0;0;0m')
+    except KeyboardInterrupt:
+        time.sleep(1)
+        print(Fcolor.red+"Exit..."+"\033[1;1;0m")
+        time.sleep(1)
 
 
 
