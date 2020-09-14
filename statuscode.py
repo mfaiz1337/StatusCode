@@ -19,10 +19,11 @@ import os
 import socket
 import urllib3
 from modules.color import Fcolor
+from modules.banner import petern
 subdo = []
 
 subdomain = []
-
+print(petern)
 print(Fcolor.cyan+50*".")
 inp = input(Fcolor.yellow+"[i] Enter Subdomain File Path: ")
 print(50*".")
