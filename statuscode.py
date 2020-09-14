@@ -63,6 +63,8 @@ for x in range(len(subdomain)):
         time.sleep(1)
         print(Fcolor.red+"Exit..."+"\033[1;1;0m")
         time.sleep(1)
+        break
+        sys.exit()
 
 
 
