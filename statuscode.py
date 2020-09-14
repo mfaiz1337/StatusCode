@@ -27,10 +27,15 @@ print(Fcolor.cyan+50*".")
 inp = input(Fcolor.yellow+"[i] Enter Subdomain File Path: ")
 print(50*".")
 if os.path.isdir(inp) == False:
-    readfile = open(inp, "r")
-    filesw = readfile.readlines()
-    for i in filesw:
-        subdomain.append(i.replace("\n",""))
+    try:
+        readfile = open(inp, "r")
+        filesw = readfile.readlines()
+        for i in filesw:
+            subdomain.append(i.replace("\n",""))
+    except FileNotFoundError:
+        print(Fcolor.red+'[err]'+Fcolor.cyan+' File not Found')
+        sys.exit()
+        
 
 else:
     print(Fcolor.red+"[err]"+Fcolor.cyan+" File PATH Directory Not Found ")
