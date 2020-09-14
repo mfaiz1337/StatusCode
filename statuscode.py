@@ -19,7 +19,7 @@ import os
 import socket
 import urllib3
 from modules.color import Fcolor
-from modules.banner import petern
+from modules.banner import patern
 subdo = []
 
 subdomain = []
