@@ -19,21 +19,8 @@ import re
 import os
 import socket
 import urllib3
-from modules.color import Fcolor
-from modules.banner import banner
-print(banner)
+from modules import Fcolor
 subdo = []
-spyse = spyse.spyse()
-
-#w =  open(os.path.join(sys.path[0],"subdomain.txt"), "w")
-
-'''subdomain = spyse.subdomains(target,param='domain')
-for i in subdomain["records"]:
-    var = i["domain"]
-    subdo.append(var)'''
-
-
-
 
 subdomain = []
 
