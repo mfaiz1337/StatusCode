@@ -23,7 +23,7 @@ from modules.banner import patern
 subdo = []
 
 subdomain = []
-print(petern)
+print(patern)
 print(Fcolor.cyan+50*".")
 inp = input(Fcolor.yellow+"[i] Enter Subdomain File Path: ")
 print(50*".")
