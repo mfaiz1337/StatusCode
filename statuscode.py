@@ -14,12 +14,11 @@ __version__ = "croll 1.0dev"
 import requests
 import time
 import sys
-import spyse
 import re
 import os
 import socket
 import urllib3
-from modules import Fcolor
+from modules.color import Fcolor
 subdo = []
 
 subdomain = []
