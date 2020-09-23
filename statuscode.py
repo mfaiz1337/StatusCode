@@ -42,25 +42,25 @@ def Status():
 
     else:
         print("[err]"+" File PATH Directory Not Found ")
-        print("\nTotal Subdomain Found :",str(len(subdomain)))
-        print("SCode".center(0)+"Domain".center(25)+"IP".center(25))
-        print(50*"_")
-        for x in range(len(subdomain)):
-            try:
-                nb = socket.gethostbyname(subdomain[x])
-                req = requests.get("http://"+subdomain[x])
-                print(str(req.status_code)," | ",req.url," | ",nb)
-            except socket.gaierror:
-                print("[!] Host Not Found: ",subdomain[x])
+    print("\nTotal Subdomain Found :",str(len(subdomain)))
+    print("SCode".center(0)+"Domain".center(25)+"IP".center(25))
+    print(50*"_")
+    for x in range(len(subdomain)):
+        try:
+            nb = socket.gethostbyname(subdomain[x])
+            req = requests.get("http://"+subdomain[x])
+            print(str(req.status_code)," | ",req.url," | ",nb)
+        except socket.gaierror:
+            print("[!] Host Not Found: ",subdomain[x])
 
-            except socket.error:
-                print("[!] Not Connected: ",subdomain[x])
-            except KeyboardInterrupt:
-                time.sleep(1)
-                print(Fcolor.red+"Exit..."+"\033[1;1;0m")
-                time.sleep(1)
-                break
-                sys.exit()
+        except socket.error:
+            print("[!] Not Connected: ",subdomain[x])
+        except KeyboardInterrupt:
+            time.sleep(1)
+            print(Fcolor.red+"Exit..."+"\033[1;1;0m")
+            time.sleep(1)
+            break
+            sys.exit()
 
 if __name__ == "__main__":
     x = threading.Thread(target=Status)          
