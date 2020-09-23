@@ -11,61 +11,61 @@ Advance Option created By Md. Faizal
 '''
 __author__ = "Md. Faizal"
 __version__ = "croll 1.0dev"
+
+from modules.color import Fcolor
+from modules.banner import patern
 import requests
 import time
 import sys
-import re
 import os
 import socket
 import urllib3
-from modules.color import Fcolor
-from modules.banner import patern
-subdo = []
-
-subdomain = []
-print(patern)
-print(Fcolor.cyan+50*".")
-inp = input(Fcolor.yellow+"[i] Enter Subdomain File Path: ")
-print(50*".")
-if os.path.isdir(inp) == False:
-    try:
-        readfile = open(inp, "r")
-        filesw = readfile.readlines()
-        for i in filesw:
-            subdomain.append(i.replace("\n",""))
-    except FileNotFoundError:
-        print(Fcolor.red+'[err]'+Fcolor.cyan+' File not Found')
-        sys.exit()
+import argparse
+import threading
+def Status():
+    print(Fcolor.cyan+patern)
+    subdo = []
+    subdomain = []
+    print(50*".")
+    inp = input("[i] Enter Subdomain File Path: ")
+    print(50*".")
+    if os.path.isdir(inp) == False:
+        try:
+            readfile = open(inp, "r")
+            filesw = readfile.readlines()
+            for i in filesw:
+                subdomain.append(i.replace("\n",""))
+        except FileNotFoundError:
+            print('[err]'+' File not Found')
+            sys.exit()
         
 
-else:
-    print(Fcolor.red+"[err]"+Fcolor.cyan+" File PATH Directory Not Found ")
-print(Fcolor.white+"\nTotal Subdomain Found :",Fcolor.cyan+str(len(subdomain)))
-print(Fcolor.yellow+"SCode".center(0)+"Domain".center(25)+"IP".center(25))
-print(Fcolor.purple+50*"_")
-for x in range(len(subdomain)):
-    try:
-        nb = socket.gethostbyname(subdomain[x])
-        req = requests.get("http://"+subdomain[x])
-        print(Fcolor.black+str(req.status_code)," | ", Fcolor.blue+req.url," | ", Fcolor.cyan+nb)
-    except socket.gaierror:
-        print(Fcolor.red+"[!] Host Not Found: ",Fcolor.blue+subdomain[x])
+    else:
+        print("[err]"+" File PATH Directory Not Found ")
+        print("\nTotal Subdomain Found :",str(len(subdomain)))
+        print("SCode".center(0)+"Domain".center(25)+"IP".center(25))
+        print(50*"_")
+        for x in range(len(subdomain)):
+            try:
+                nb = socket.gethostbyname(subdomain[x])
+                req = requests.get("http://"+subdomain[x])
+                print(str(req.status_code)," | ",req.url," | ",nb)
+            except socket.gaierror:
+                print("[!] Host Not Found: ",subdomain[x])
 
-    except socket.error:
-        print(Fcolor.red+"[!] Not Connected: ", Fcolor.blue+subdomain[x])
+            except socket.error:
+                print("[!] Not Connected: ",subdomain[x])
+            except KeyboardInterrupt:
+                time.sleep(1)
+                print(Fcolor.red+"Exit..."+"\033[1;1;0m")
+                time.sleep(1)
+                break
+                sys.exit()
 
-    except urllib3.exceptions.NewConnectionError:
-        print("New Connection Error")
-    except requests.exceptions.ConnectionError:
-        print("Conection Error ")
-    except urllib3.exceptions.MaxRetryError:
-        print("Over Retry")
-    except KeyboardInterrupt:
-        time.sleep(1)
-        print(Fcolor.red+"Exit..."+"\033[1;1;0m")
-        time.sleep(1)
-        break
-        sys.exit()
+if __name__ == "__main__":
+    x = threading.Thread(target=Status)          
+    x.start()
+    
 
 
 
