@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Coding: utf-8
 # Made By Md. Faizal
 
