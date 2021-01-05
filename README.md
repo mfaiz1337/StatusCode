@@ -17,7 +17,7 @@ Code Write in Python
 
 3. python3 -m pip install requirements.txt
 
-4. python3 statuscode.py <file-path>
+4. python3 statuscode.py <subdomain-file-path>
 
 ```
 
